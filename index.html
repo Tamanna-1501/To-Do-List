@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO LIST  APP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -12,9 +14,10 @@
             <h1>TO DO LIST</h1>
             <div class="input-field">
                 <input type="text" id="taskInput" placeholder="Add your new task">
-                <button id="button" onclick="addTask()">Add</button>
+                <button id="button" onclick="addTask()"> <i class="fa-solid fa-plus"></i></button>
             </div>
             <ul id="taskList">
+              <img  class="empty-image" src="empty-image.png" alt="empty">
                 <!-- List items will be added here dynamically -->
             </ul>
         </div>
