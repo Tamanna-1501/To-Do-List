@@ -1,10 +1,26 @@
 // Initialize the task list from localStorage when the page loads
-document.addEventListener('DOMContentLoaded', loadTasks);
+document.addEventListener('DOMContentLoaded', function() {
+    loadTasks();
+    ToggleEmptyState();
+});
 
+const taskList = document.getElementById('taskList');
 // Function to add a new task
-function addTask() {
+const emptyimage = document.querySelector('.empty-image');
+const ToggleEmptyState = () => {
+    if (taskList.children.length === 0) {
+        emptyimage.style.display = 'block';     
+    } else {
+        emptyimage.style.display = 'none';
+    }
+};
+    function addTask(evt) {
+    if (evt && evt.preventDefault) {
+        evt.preventDefault();
+    }
     const taskInput = document.getElementById('taskInput');
     const taskText = taskInput.value.trim();
+
 
     if (taskText === '') {
         alert('Please enter a task!');
@@ -15,7 +31,8 @@ function addTask() {
     taskInput.value = '';
     taskInput.focus();
     saveTasks();
-}
+    ToggleEmptyState();
+};
 
 // Function to create a task element
 function createTaskElement(taskText, isCompleted = false) {
@@ -41,13 +58,13 @@ function createTaskElement(taskText, isCompleted = false) {
     
     // Create edit button
     const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
+    editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
     editBtn.classList.add('edit-btn');
     editBtn.addEventListener('click', startEditing);
     
     // Create delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+      deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', deleteTask);
     
@@ -119,13 +136,13 @@ function finishEditing(li, newText) {
     
     // Create edit button
     const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
-    editBtn.classList.add('edit-btn');
+    editBtn.innerHTML='<i class="fa-solid fa-pen"></i>';
+        editBtn.classList.add('edit-btn');
     editBtn.addEventListener('click', startEditing);
     
     // Create delete button
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+    deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', deleteTask);
     
@@ -148,6 +165,7 @@ function deleteTask(event) {
     const li = event.target.closest('li');
     li.remove();
     saveTasks();
+    ToggleEmptyState();
 }
 
 // Function to save tasks to localStorage
@@ -171,11 +189,13 @@ function loadTasks() {
     savedTasks.forEach(task => {
         createTaskElement(task.text, task.completed);
     });
+    ToggleEmptyState();
 }
 
 // Add task when Enter key is pressed
 document.getElementById('taskInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        addTask();
+        addTask(event);
     }
 });
+document.getElementById('taskForm').addEventListener('submit', addTask);

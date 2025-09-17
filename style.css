@@ -24,12 +24,20 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0 20px;   
-    width: 100%;
+    width: 50%;
     height: 100%;
     max-width: 90%;
 }
-
+.empty-image{
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    opacity: 0.5;
+}
 .container {
+    width: 500%;
+    max-width: 400px;
+    height:50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,8 +61,6 @@ body {
     align-items: center;
     width: 100%;
 }
-
-
 #taskInput {
     flex: 1;
     padding: 0.75rem;
@@ -71,15 +77,26 @@ body {
 }
 
 button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0.75rem 1.25rem;
     border: none;
+    border-radius: none;
     border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
+    margin-left: 10px;
+    padding:8px;
+    font-size:1.1rem;
+    transition: all 0.2s ease;
+
+
 }
 
 button:hover {
-    background-color: #45a049;
+    transform: scale(1.1);
+    background-color: #ef476f;
 }
 
 ul {
@@ -87,13 +104,28 @@ ul {
     padding: 0;
     margin: 0;
 }
-
+.todos-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
 li {
     display: flex;
     align-items: center;
     padding: 0.75rem;
     border-bottom: 1px solid #eee;
-    gap: 0.5rem;
+    gap: 2rem;
+    flex-grow: 1;
+    word-break: break-word;
+     flex: 1;
+    padding: 0.75rem;
+    border: none;
+    outline: none;
+    border-radius: 22px;
+    font-size: 1.1rem;
+    background: rgba(255,194,209,0.3);
+    color:#2b2525;
+    margin-bottom: 4px;
 }
 
 li:last-child {
@@ -116,7 +148,7 @@ li:last-child {
 /* Completed task style */
 .task-completed .task-text {
     text-decoration: line-through;
-    color: #888;
+    color: #1a1616;
 }
 
 /* Edit input field */
@@ -136,7 +168,7 @@ li:last-child {
 
 /* Delete button */
 .delete-btn {
-    background-color: #ff4444;
+    background-color: #073b4c;
     color: white;
     border: none;
     border-radius: 4px;
@@ -146,12 +178,12 @@ li:last-child {
 }
 
 .delete-btn:hover {
-    background-color: #dd3333;
+    background-color: #ef476f;
 }
 
 /* Edit button */
 .edit-btn {
-    background-color: #ff9800;
+    background-color: #073b4c;
     color: white;
     border: none;
     border-radius: 4px;
@@ -161,7 +193,7 @@ li:last-child {
 }
 
 .edit-btn:hover {
-    background-color: #e68900;
+    background-color: #ef476f;
 }
 
 /* Save button (shown during editing) */

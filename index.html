@@ -12,14 +12,20 @@
     <section class="main">
         <div class="container">
             <h1>TO DO LIST</h1>
+            <form id="taskForm">
             <div class="input-field">
                 <input type="text" id="taskInput" placeholder="Add your new task">
                 <button id="button" onclick="addTask()"> <i class="fa-solid fa-plus"></i></button>
             </div>
-            <ul id="taskList">
-              <img  class="empty-image" src="empty-image.png" alt="empty">
+            </form>
+            <div class="todos-container">
+                 <img  class="empty-image" src="empty-image.png" alt="empty">
+                 <ul id="taskList">
+             
                 <!-- List items will be added here dynamically -->
             </ul>
+        </div>
+           
         </div>
         </section>
          <script src="app.js"></script>
